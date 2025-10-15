@@ -2,11 +2,11 @@ import os, json, re, requests
 from datetime import datetime, timedelta
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-BASE_DATE = datetime(2025, 10, 15)  # fixed start date
+BASE_DATE = datetime(2025, 10, 15) 
 
 def local_plan(goal: str, total_days: int):
     """Generates a deterministic, meaningful plan locally without API."""
-    # Define example task templates per day
+  
     example_tasks = [
         "Gather all necessary study or project materials and resources.",
         "Create a detailed schedule or outline for the goal.",
@@ -32,7 +32,7 @@ def local_plan(goal: str, total_days: int):
 
 def generate_task_plan(goal: str):
     """Generates a task plan using API if available, else fallback to local plan."""
-    # Extract duration from goal
+   
     duration_match = re.search(r"(\d+)\s*(day|week|month)s?", goal.lower())
     total_days = 7
     if duration_match:
@@ -40,7 +40,6 @@ def generate_task_plan(goal: str):
         num = int(num)
         total_days = num * 7 if "week" in unit else num * 30 if "month" in unit else num
 
-    # Use API if key exists
     if OPENROUTER_API_KEY:
         try:
             headers = {
