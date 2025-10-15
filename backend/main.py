@@ -5,7 +5,7 @@ from utils import llm_logic
 
 app = FastAPI()
 
-# Allow frontend
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
