@@ -20,7 +20,7 @@ class PlanRequest(BaseModel):
 @app.post("/generate-plan")
 def generate_plan(request: PlanRequest):
     try:
-        # llm_logic will parse duration from the goal itself
+    
         plan = llm_logic.generate_task_plan(request.goal)
         return plan
     except Exception as e:
